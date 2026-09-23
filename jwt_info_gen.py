@@ -9,7 +9,6 @@ from Crypto.Cipher import AES
 from google.protobuf import json_format
 from google.protobuf import descriptor as _descriptor
 from google.protobuf import descriptor_pool as _descriptor_pool
-from google.protobuf import runtime_version as _runtime_version
 from google.protobuf import symbol_database as _symbol_database
 from google.protobuf.internal import builder as _builder
 from google.protobuf.message import Message
@@ -17,13 +16,6 @@ from google.protobuf.message import Message
 # ============================================================
 #  PART 1 — FreeFire_pb2 (inlined descriptor)
 # ============================================================
-
-try:
-    _runtime_version.ValidateProtobufRuntimeVersion(
-        _runtime_version.Domain.PUBLIC, 6, 30, 0, "", "FreeFire.proto",
-    )
-except Exception:
-    pass
 
 _sym_db = _symbol_database.Default()
 
