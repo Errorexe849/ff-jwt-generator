@@ -67,7 +67,18 @@ REGIONAL_CLIENTS = {
     "BD": "https://clientbp.ppmainecoonghj.com",
     "IND": "https://client.ind.freefiremobile.com",
     "BR": "https://client.us.freefiremobile.com",
+    "NA": "https://client.us.freefiremobile.com",
+    "US": "https://client.us.freefiremobile.com",
+    "SAC": "https://client.us.freefiremobile.com",
     "ME": "https://clientbp.ggblueshark.com",
+    "VN": "https://client.vn.freefiremobile.com",
+    "PK": "https://client.pk.freefiremobile.com",
+    "SG": "https://client.sg.freefiremobile.com",
+    "ID": "https://client.id.freefiremobile.com",
+    "RU": "https://client.ru.freefiremobile.com",
+    "TH": "https://client.th.freefiremobile.com",
+    "TW": "https://client.tw.freefiremobile.com",
+    "EU": "https://client.eu.freefiremobile.com",
     "default": "https://clientbp.ppmainecoonghj.com"
 }
 
@@ -261,7 +272,14 @@ def fetch_player_profile(jwt_token: str, account_id: int, server_url: str = None
     candidate_urls = []
     if server_url:
         candidate_urls.append(server_url.rstrip("/") + "/GetPlayerPersonalShow")
-    candidate_urls.append(REGIONAL_CLIENTS.get(region, REGIONAL_CLIENTS["default"]) + "/GetPlayerPersonalShow")
+    
+    if region:
+        reg_key = str(region).upper()
+        if reg_key in REGIONAL_CLIENTS:
+            candidate_urls.append(REGIONAL_CLIENTS[reg_key] + "/GetPlayerPersonalShow")
+        else:
+            candidate_urls.append(f"https://client.{reg_key.lower()}.freefiremobile.com/GetPlayerPersonalShow")
+
     candidate_urls.append(REGIONAL_CLIENTS["default"] + "/GetPlayerPersonalShow")
 
     for url in candidate_urls:
